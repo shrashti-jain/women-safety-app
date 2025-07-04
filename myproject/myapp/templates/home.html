@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Safety App</title>
+    {% csrf_token %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'selfdefense/scripts.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+</head>
+<body>
+    <header>
+        <span class="menu-icon" onclick="toggleSidebar()">&#9776;</span>
+        <h1>Women's Safety App</h1>
+        <p>Your safety is our priority. Explore the features below.</p>
+    </header>
+    <div id="sidebar" class="sidebar">
+        <div class="logo">
+            <a href="#">ℝ𝔸𝕂ℍ𝕀</a>
+            </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+        <ul class="list-icon">
+        <li>
+        <i class="fa-solid fa-house"></i>
+        <a href="#fake-call">Home</a>
+        </li>
+        <li>
+        <i class="fa-solid fa-user"></i>
+        <a href="#self-defense">Profile</a>
+    </li>
+    <li>
+        <i class="fa-solid fa-phone"></i>
+        <a href="#emergency-contacts">Contacts</a>
+        </li>
+        <li>
+        <i class="fa-solid fa-store"></i>
+        <a href="#My File">My File</a>
+        </li>
+        <li>
+        <i class="fa-solid fa-gear"></i>
+        <a href="#Settings">Setting</a>
+        </li>
+        <li>
+        <i class="fa-solid fa-comments"></i>
+        <a href="#Feedback">Feedback</a>
+        </li>
+        <li>
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <a href="#panic-button-feature">Logout</a>
+        </li>
+    </ul>
+    </div>
+
+    <section class="features">
+       <!-- Fake Call Feature -->
+       <div class="feature-card" id="fake-call">
+        <div class="feature-content">
+            <h2>Fake Call</h2>
+            <p>Generate a fake call to get out of uncomfortable situations.</p>
+            <button class="feature-button">Activate Fake Call</button>
+        </div>
+    </div>
+
+    <!-- Other Features can go here -->
+    <div id="fake-call-ui" style="display: none;">
+        <h3>Incoming Call...</h3>
+        <div class="caller-details">
+            <p>Caller: John Doe</p>
+            <button id="end-call-button">End Call</button>
+        </div>
+    </div>
+
+        <!-- Self Defense Training Feature -->
+        <div class="feature-card" id="self-defense">
+            <div class="feature-content">
+                <h2>Self Defense Training</h2>
+                <p>Access self-defense techniques and tutorials.</p>
+                <button class="feature-button">Start Training</button>
+            </div>
+        </div>
+
+        <!-- Emergency Contacts Feature -->
+        <div class="feature-card" id="emergency-contacts">
+            <div class="feature-content">
+                <h2>Emergency Contacts</h2>
+                <p>Quickly access and call your saved emergency contacts.</p>
+                <button class="feature-button">View Contacts</button>
+            </div>
+        </div>
+        
+        <!-- Panic Button Feature -->
+        <div class="feature-card" id="panic-button-feature">
+            <div class="feature-content">
+                <h2>Panic Button</h2>
+                <p>Send an immediate distress signal with one tap.</p>
+                <form method="post" action="{% url 'panic_button' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="feature-button" type="submit">Send Panic Alert</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Stay Safe, Stay Aware | Women's Safety App</p>
+    </footer>
+
+    <!-- Link the 3D effect and interactivity -->
+    
+
+    <!-- Audio for fake ringtone -->
+    <audio id="fake-call-audio" src="{% static 'audio/fake-ringtone.mp3' %}" preload="auto"></audio>
+
+    <!-- JavaScript for Shake Detection -->
+    <script src="{% static 'js/script.js' %}"></script>
+    
+</body>
+</html>
